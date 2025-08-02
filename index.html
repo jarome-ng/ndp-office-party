@@ -97,6 +97,8 @@
         .info-item {
             display: flex;
             align-items: center;
+            justify-content: center;
+            text-align: center;
             margin: 20px 0;
             font-size: 1.3em;
             color: #2c3e50;
@@ -122,6 +124,8 @@
             margin: 15px 0;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-align: center;
+            justify-content: center;
         }
         
         .fireworks {
@@ -218,6 +222,33 @@
             }
             100% {
                 transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .burst-firework {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .burst-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: burst 2s ease-out forwards;
+        }
+        
+        @keyframes burst {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
                 opacity: 0;
             }
         }
@@ -329,7 +360,7 @@
             
             <div class="info-item">
                 <span class="emoji">🟥</span>
-                <span>Wear red, white or anything Singapore related <span class="merlion">🦁</span>🩴</span>
+                <span>Wear red, white or anything Singapore related <span class="merlion">🦁</span></span>
             </div>
             
             <div class="info-item">
@@ -356,7 +387,7 @@
         
         <div class="footer">
             <div class="merlion">🦁</div>
-            <div>Majulah Singapura! 🇸🇬</div>
+            <div>MajuRAH Singapura! 🇸🇬</div>
             <div style="margin-top: 10px; font-size: 1em;">See you there for food, fun, and festivities!</div>
         </div>
     </div>
@@ -398,11 +429,84 @@
             }
         }
         
+        // Create flying planes
+        function createPlane() {
+            const planesContainer = document.getElementById('planes-container');
+            const planes = ['✈️', '🛩️'];
+            
+            const plane = document.createElement('div');
+            plane.className = 'plane';
+            plane.innerHTML = planes[Math.floor(Math.random() * planes.length)];
+            plane.style.top = (Math.random() * 40 + 10) + '%';
+            plane.style.animationDelay = Math.random() * 2 + 's';
+            
+            planesContainer.appendChild(plane);
+            
+            setTimeout(() => {
+                plane.remove();
+            }, 8000);
+        }
+        
+        // Create flying planes
+        function createPlane() {
+            const planesContainer = document.getElementById('planes-container');
+            const planes = ['✈️', '🛩️'];
+            
+            const plane = document.createElement('div');
+            plane.className = 'plane';
+            plane.innerHTML = planes[Math.floor(Math.random() * planes.length)];
+            plane.style.top = (Math.random() * 40 + 10) + '%';
+            plane.style.animationDelay = Math.random() * 2 + 's';
+            
+            planesContainer.appendChild(plane);
+            
+            setTimeout(() => {
+                plane.remove();
+            }, 8000);
+        }
+        
+        // Create burst fireworks
+        function createBurstFirework() {
+            const burstFirework = document.createElement('div');
+            burstFirework.className = 'burst-firework';
+            burstFirework.style.left = (Math.random() * 80 + 10) + '%';
+            burstFirework.style.top = (Math.random() * 60 + 10) + '%';
+            
+            const colors = ['#e74c3c', '#ffffff', '#f39c12', '#3498db'];
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'burst-particle';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (i / 12) * 2 * Math.PI;
+                const distance = Math.random() * 80 + 40;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.left = '50px';
+                particle.style.top = '50px';
+                
+                burstFirework.appendChild(particle);
+            }
+            
+            document.body.appendChild(burstFirework);
+            
+            setTimeout(() => {
+                burstFirework.remove();
+            }, 2000);
+        }
+        
         // Create fireworks every 2 seconds
         setInterval(createFirework, 2000);
         
         // Create confetti every 800ms
         setInterval(createConfetti, 800);
+        
+        // Create burst fireworks every 3 seconds
+        setInterval(createBurstFirework, 3000);
         
         // Simple countdown or party message
         function updateCountdown() {
@@ -410,7 +514,7 @@
             const partyDate = new Date('2024-08-09 18:00:00');
             
             if (now > partyDate) {
-                document.getElementById('countdown-timer').innerHTML = '🎉 PARTY TIME! Hope you\'re having a blast! 🎉';
+                document.getElementById('countdown-timer').innerHTML = '🎉 See you there at Boardroom 2! 🎉';
             } else {
                 const messages = [
                     '🎊 Get ready for an amazing Singapore celebration! 🎊',
