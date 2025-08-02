@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Day Office Party 🇸🇬</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    header {
+      background-color: #ff2e2e;
+      color: white;
+      padding: 1.5rem 0;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .details {
+      font-size: 1.2rem;
+      margin: 1rem auto;
+      max-width: 500px;
+      line-height: 1.8;
+    }
+    .emoji {
+      font-size: 2rem;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎆 9 Aug – National Day Office Party 🇸🇬</h1>
+  </header>
+
+  <div class="details">
+    <p><span class="emoji">🕕</span> <strong>6pm onwards</strong></p>
+    <p><span class="emoji">🟥⬜</span> Wear red, white or anything Singapore related <span class="emoji">🦁🩴</span></p>
+    <p><span class="emoji">🍽</span> Bring your favourite local dish or drink</p>
+    <p><span class="emoji">📺</span> Live streaming of the National Day Parade</p>
+    <p><span class="emoji">👨‍👩‍👧‍👦</span> Bring your family along!</p>
+  </div>
+
+  <footer>
+    🇸🇬 Celebrating Together as One – Happy National Day! 🇸🇬
+  </footer>
+
+</body>
+</html>
