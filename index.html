@@ -2,40 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>National Day Office Party 🇸🇬</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(to bottom right, #fff6f0, #ffecec);
       color: #333;
-      text-align: center;
       padding: 2rem;
+      text-align: center;
+      overflow-x: hidden;
     }
     header {
-      background-color: #ff2e2e;
+      background: #ff2e2e;
       color: white;
-      padding: 1.5rem 0;
-      border-radius: 12px;
+      padding: 2rem 1rem;
+      border-radius: 16px;
       margin-bottom: 2rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      animation: pop 0.6s ease-out;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
     h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
     }
-    .details {
+    .party-card {
+      background: white;
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      animation: fadeIn 1.2s ease;
+    }
+    .party-card p {
       font-size: 1.2rem;
-      margin: 1rem auto;
-      max-width: 500px;
+      margin: 1rem 0;
       line-height: 1.8;
     }
     .emoji {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #888;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      top: -10px;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -45,17 +83,31 @@
     <h1>🎆 9 Aug – National Day Office Party 🇸🇬</h1>
   </header>
 
-  <div class="details">
+  <div class="party-card">
     <p><span class="emoji">🕕</span> <strong>6pm onwards</strong></p>
     <p><span class="emoji">🟥⬜</span> Wear red, white or anything Singapore related <span class="emoji">🦁🩴</span></p>
-    <p><span class="emoji">🍽</span> Bring your favourite local dish or drink</p>
+    <p><span class="emoji">🍽️</span> Bring your favourite local dish or drink</p>
     <p><span class="emoji">📺</span> Live streaming of the National Day Parade</p>
     <p><span class="emoji">👨‍👩‍👧‍👦</span> Bring your family along!</p>
   </div>
 
   <footer>
-    🇸🇬 Celebrating Together as One – Happy National Day! 🇸🇬
+    🇸🇬 Together As One – Happy National Day! 🇸🇬
   </footer>
+
+  <!-- Confetti Generator -->
+  <script>
+    const colours = ['#ff2e2e', '#ffffff', '#ffcc00', '#ff6699'];
+    for (let i = 0; i < 40; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = `${Math.random() * 100}vw`;
+      confetti.style.backgroundColor = colours[Math.floor(Math.random() * colours.length)];
+      confetti.style.animationDelay = `${Math.random() * 5}s`;
+      confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
+      document.body.appendChild(confetti);
+    }
+  </script>
 
 </body>
 </html>
