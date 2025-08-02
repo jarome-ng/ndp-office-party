@@ -17,6 +17,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
@@ -314,13 +316,120 @@
         
         @media (max-width: 768px) {
             .main-title {
-                font-size: 2.5em;
+                font-size: 2.2em;
+                line-height: 1.2;
+                margin-bottom: 10px;
             }
+            
+            .date-time {
+                font-size: 1.2em;
+            }
+            
             .info-item {
                 font-size: 1.1em;
+                flex-direction: column;
+                text-align: center;
+                margin: 15px 0;
+                padding: 0 10px;
             }
+            
+            .emoji {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+                margin-right: 0;
+            }
+            
             .container {
                 padding: 10px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .info-card {
+                padding: 20px 15px;
+                margin: 15px 0;
+            }
+            
+            .special-item {
+                padding: 12px;
+                margin: 12px 0;
+            }
+            
+            .countdown {
+                padding: 20px 15px;
+                font-size: 1.2em;
+                margin: 15px 0;
+            }
+            
+            .footer {
+                margin-top: 30px;
+                font-size: 1.1em;
+                padding: 0 10px;
+            }
+            
+            .merlion {
+                font-size: 2em;
+            }
+            
+            .floating-element {
+                font-size: 1.5em;
+            }
+            
+            .burst-firework {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .burst-particle {
+                width: 3px;
+                height: 3px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.8em;
+                padding: 0 5px;
+            }
+            
+            .date-time {
+                font-size: 1.1em;
+            }
+            
+            .info-item {
+                font-size: 1em;
+                margin: 12px 0;
+            }
+            
+            .header {
+                padding: 20px 10px;
+                border-radius: 15px;
+            }
+            
+            .info-card {
+                padding: 15px 10px;
+                border-radius: 15px;
+            }
+            
+            .countdown {
+                font-size: 1.1em;
+                padding: 15px 10px;
+            }
+            
+            .container {
+                padding: 5px;
+            }
+            
+            .floating-element {
+                font-size: 1.2em;
+            }
+            
+            .burst-firework {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -561,6 +670,17 @@
                 
                 setTimeout(() => confetti.remove(), 2000);
             }
+        });
+        
+        // Add touch support for mobile
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const clickEvent = new MouseEvent('click', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            document.dispatchEvent(clickEvent);
         });
     </script>
 </body>
